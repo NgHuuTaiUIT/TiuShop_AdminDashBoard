@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Table.css";
 
 function Table(props) {
-  console.log("Table", props);
+  const initDataShow = props.limit
+    ? props.bodyData.slice(0, Number(props.limit))
+    : props.bodyData;
+
+  const [dataShow, setDataShow] = useState(initDataShow);
+  const [currPage, setcurrPage] = useState(0);
+  let pages = 1;
+  let range = [];
+
+  console.log(currPage);
+
+  if (props.limit !== undefined) {
+    let page = Math.floor(props.bodyData.length / Number(props.limit));
+    pages =
+      props.bodyData.length && Number(props.limit) === 0 ? page : page + 1;
+    range = [...Array(page).keys()];
+    console.log(range);
+  }
+
+  const selectPage = page => {
+    const start = page * Number(props.limit);
+    const end = start + Number(props.limit);
+    setDataShow(props.bodyData.slice(start, end));
+    setcurrPage(page);
+  };
+
   return (
     <div>
       <div className="table-wrapper">
@@ -18,13 +43,24 @@ function Table(props) {
           ) : null}
           {props.bodyData && props.renderBody ? (
             <tbody>
-              {props.bodyData.map((item, index) =>
-                props.renderBody(item, index)
-              )}
+              {dataShow.map((item, index) => props.renderBody(item, index))}
             </tbody>
           ) : null}
         </table>
       </div>
+      {pages > 1 ? (
+        <div className="table__pagination">
+          {range.map((item, index) => (
+            <div
+              className={`table__pagination-item ${
+                currPage === index ? "active" : ""
+              }`}
+              onClick={() => selectPage(index)}>
+              {item + 1}
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }

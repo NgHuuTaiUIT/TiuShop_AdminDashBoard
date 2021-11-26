@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import statusCards from "../assets/JsonData/status-card-data.json";
 import StatusCard from "../components/StatusCard/StatusCard";
 import Chart from "react-apexcharts";
-import { Link } from "react-router-dom";
 import Table from "../components/Table/Table";
+import { Link } from "react-router-dom";
+import Badge from "../components/Badge/Badge";
+import { useSelector, useDispatch } from "react-redux";
+import ThemmeAction from "../redux/actions/ThemeActions";
 
 const chartoptions = {
   series: [
@@ -122,7 +125,7 @@ const renderOrderBody = (item, index) => (
     <td>{item.price}</td>
     <td>{item.date}</td>
     <td>
-      <span>{item.status}</span>
+      <Badge type={orderStatus[item.status]} content={item.status} />
     </td>
   </tr>
 );
@@ -137,14 +140,31 @@ const renderCustomerBody = (item, index) => (
 );
 
 function Dashboard() {
+  const themeReducer = useSelector(state => state.ThemeReducer);
+
+  const dispatch = useDispatch();
+
+  dispatch(ThemmeAction.getTheme());
+
+  useEffect(() => {
+    if (themeReducer.mode === "theme-mode-dark") {
+      console.log(themeReducer.mode);
+
+      chartoptions.options.chart.foreColor = "#fff";
+    } else {
+      console.log(themeReducer.mode);
+
+      chartoptions.options.chart.foreColor = "#373d3f";
+    }
+  }, [themeReducer.mode]);
   return (
     <div>
-      <h2 className="page-header">Dashboard</h2>
+      <h1 className="page-header">Dashboard</h1>
       <div className="row">
         <div className="col-6">
           <div className="row">
             {statusCards.map((item, index) => (
-              <div className="col-6">
+              <div key={index} className="col-6">
                 <StatusCard
                   icon={item.icon}
                   title={item.title}
@@ -166,7 +186,10 @@ function Dashboard() {
         </div>
         <div className="col-4">
           <div className="card">
-            <div className="card__header">Top Customers</div>
+            <div className="card__header">
+              {" "}
+              <h3>Top Customers</h3>
+            </div>
             <div className="card__body">
               {/* table */}
               <Table

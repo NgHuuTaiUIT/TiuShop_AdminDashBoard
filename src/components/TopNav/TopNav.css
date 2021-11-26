@@ -4,12 +4,18 @@
   align-items: center;
   justify-content: space-between;
   height: var(--topnav-height);
+  position: fixed;
+  background: var(--main-bg);
+  z-index: 99;
+  width: calc(100% - var(--sidebar-width));
 }
 
 .topnav__search {
   position: relative;
   height: 40px;
-  background-color: var(--main-bg);
+  /* background-color: var(--main-bg); */
+  background-color: var(--second-bg);
+
   display: flex;
   align-items: center;
   box-shadow: var(--box-shadow);
@@ -28,7 +34,8 @@
   padding: 10px 60px 10px 20px;
   border-radius: var(--border-radius);
   color: var(--txt-color);
-  background-color: var(--main-bg);
+  /* background-color: var(--main-bg); */
+  background-color: var(--second-bg);
 }
 
 .topnav__right {

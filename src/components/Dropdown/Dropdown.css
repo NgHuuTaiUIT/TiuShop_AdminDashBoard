@@ -36,7 +36,7 @@
   width: max-content;
   max-width: 400px;
   box-shadow: var(--box-shadow);
-  background-color: var(--txt-white);
+  background-color: var(--main-bg);
   border-radius: var(--border-radius);
   overflow: hidden;
   transform-origin: top right;

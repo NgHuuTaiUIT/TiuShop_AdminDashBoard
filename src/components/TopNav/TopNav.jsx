@@ -4,6 +4,7 @@ import "./TopNav.css";
 import notification from "../../assets/JsonData/notification.json";
 import { Link } from "react-router-dom";
 import user_menus from "../../assets/JsonData/user_menus.json";
+import ThemeMenu from "../ThemeMenu/ThemeMenu";
 
 const curr_user = {
   display_name: "Tai Nguyen",
@@ -72,7 +73,7 @@ function TopNav() {
           />
         </div>
         <div className="topnav__right-item">
-          <Dropdown />
+          <ThemeMenu />
         </div>
       </div>
     </div>
