@@ -9,6 +9,39 @@
   --second-color: #62b4ff;
   --box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
+  /* Light Theme */
+  --main-bg-light: white;
+  --second-bg-light: #fafafb;
+  --txt-color-light: #455560;
+  --box-shadow-light: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  /* Dark Theme */
+  /* --main-bg-dark: #2d2d2d; */
+  --main-bg-dark: #23242d;
+  --second-bg-dark: #202020;
+  --txt-color-dark: #bbbbbb;
+  --box-shadow-dark: rgba(0, 0, 0, 0.2) Opx 5px 10px;
+
+  /* Blue Background */
+  --main-color-blue: #349eff;
+  --second-color-blue: #62b4ff;
+
+  /* Red Background */
+  --main-color-red: #fb0b12;
+  --second-color-red: #ff4a6b;
+
+  /* Cyan Background */
+  --main-color-cyan: #10d4d2;
+  --second-color-cyan: #2ae9e6;
+
+  /* Green Background */
+  --main-color-green: #019707;
+  --second-color-green: #4caf5e;
+
+  /* Orange Background */
+  --main-color-orange: #d68102;
+  --second-color-orange: #fca11a;
+
   --sidebar-width: 300px;
   --border-radius: 15px;
   --topnav-height: 110px;
@@ -58,12 +91,12 @@ input:focus {
 }
 
 .page-header {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-transform: capitalize;
 }
 
 .card {
-  padding: 30px;
+  /* padding: 30px; */
   margin-bottom: 30px;
   background-color: var(--main-bg);
   box-shadow: var(--box-shadow);
@@ -81,13 +114,58 @@ input:focus {
 
 .card__header {
   text-transform: capitalize;
+  background-image: linear-gradient(
+    to right,
+    var(--main-color),
+    var(--second-color)
+  );
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  padding: 30px;
+  color: var(--txt-white);
 }
 
 .card__header ~ .card__body {
-  margin-top: 30px;
+  /* margin-top: 30px; */
+  margin: 0 10px;
 }
 
 .card__footer {
   text-align: center;
   text-transform: capitalize;
+}
+
+.light-background {
+  background-color: var(--main-bg-light);
+  color: #000;
+}
+
+.dark-background {
+  background-color: var(--main-bg-dark);
+  color: #fff;
+}
+
+.blue-color {
+  background-color: var(--main-color-blue);
+  color: #fff;
+}
+
+.red-color {
+  background-color: var(--main-color-red);
+  color: #fff;
+}
+
+.cyan-color {
+  background-color: var(--main-color-cyan);
+  color: #fff;
+}
+
+.green-color {
+  background-color: var(--main-color-green);
+  color: #fff;
+}
+
+.orange-color {
+  background-color: var(--main-color-orange);
+  color: #fff;
 }
