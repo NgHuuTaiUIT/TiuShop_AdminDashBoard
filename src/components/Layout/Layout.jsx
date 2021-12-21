@@ -30,7 +30,9 @@ function Layout() {
     <BrowserRouter>
       <Route
         render={props => (
-          <div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
+          <div
+            className={`layout ${themeReducer.mode} ${themeReducer.color}`}
+            style={{ position: "relative" }}>
             <SideBar {...props} />
             <div className="layout__content">
               <TopNav />

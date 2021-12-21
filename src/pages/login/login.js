@@ -36,7 +36,12 @@ const Login = () => {
     <div style={style}>
       <section
         className="login-page"
-        style={{ position: "absolute", inset: 0, zIndex: 99 }}>
+        style={{
+          position: "absolute",
+          inset: 0,
+          zIndex: 99,
+          height: `${1024 + 200}px`
+        }}>
         <div className="login-wrapper">
           <div className="form">
             <img src={logo} alt="Logo" />
