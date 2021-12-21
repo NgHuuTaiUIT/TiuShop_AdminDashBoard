@@ -9,6 +9,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 import ThemmeAction from "../../redux/actions/ThemeActions";
+import Login from "../../pages/login/login";
 
 function Layout() {
   const themeReducer = useSelector(state => state.ThemeReducer);
